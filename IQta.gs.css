@@ -969,3 +969,28 @@ header h2 {
     -ms-user-select: none;
     user-select: none;
 }
+
+footer {
+    text-align: right;
+    z-index:1000;
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#eee;
+}
+
+footer a {
+    color: #ff69b4;
+}
+
+footer a:hover {
+    color: #ff1493;
+}
+
+footer span {
+    display: block;
+    margin-top: 3px;
+    margin-right: 15px;
+}
