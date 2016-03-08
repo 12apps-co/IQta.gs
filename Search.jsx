@@ -26,38 +26,67 @@ Search = React.createClass({
     handleSubmit: function (e) {
         if (e) e.preventDefault();
         if (this.state.searchString) {
-            ga('send', 'event', 'Search', 'Search', this.state.searchString);
-            this.setState({tags: [], loading: true});
-            this.props.toggleLoading(true);
-            var _this = this; // so that we can set state after Meteor's async call
-            Meteor.call('search', this.state.searchString, function (error, result) {
-                if (error) {
-                    console.error(error);
-                    Notifications.error(error);
-                    return;
-                }
-                _this.setState({tags: result, loading: false});
-                _this.props.toggleLoading(false);
-                setTimeout(function () {
-                    $('.tag > input').mousedown(function () {
-                        $(this).parent().addClass('mousedown');
-                    });
-                    $('.tag > input').mouseup(function () {
-                        $(this).parent().removeClass('mousedown');
-                    });
-                    $('.tag > input').longpress(function () {
-                        _this.setState({searchString: $(this).parent().text().replace('#', '')});
-                        _this.handleSubmit();
-                    });
-                }, 1000);
-            });
+            this.search(this.state.searchString);
         }
+    },
+
+    popular: function (string) {
+        ga('send', 'event', 'User', 'Popular', string);
+        this.search(string);
+    },
+
+    search: function (string) {
+        document.querySelector('#popular').style.display = "none";
+        document.querySelector('#saved').style.display = "none";
+        ga('send', 'event', 'Search', 'Search', string);
+        this.setState({tags: [], loading: true});
+        this.props.toggleLoading(true);
+        var _this = this; // so that we can set state after Meteor's async call
+        Meteor.call('search', string, function (error, result) {
+            if (error) {
+                console.error(error);
+                Notifications.error(error);
+                return;
+            }
+            _this.setState({tags: result, loading: false});
+            _this.props.toggleLoading(false);
+            setTimeout(function () {
+                $('.tag > input').mousedown(function () {
+                    $(this).parent().addClass('mousedown');
+                });
+                $('.tag > input').mouseup(function () {
+                    $(this).parent().removeClass('mousedown');
+                });
+                $('.tag > input').longpress(function () {
+                    ga('send', 'event', 'User', 'Longpress', this.state.searchString);
+                    _this.setState({searchString: $(this).parent().text().replace('#', '')});
+                    _this.handleSubmit();
+                });
+            }, 1000);
+        });
     },
 
     renderTags() {
         return this.state.tags.map((tag) => {
             return <Tag key={tag._id} tag={tag} addTag={this.props.addTag} removeTag={this.props.removeTag}/>;
         });
+    },
+
+    renderSavedTagsWrapper(){
+        console.log(JSON.parse(localStorage.getItem('savedTags')))
+        if (localStorage.getItem('savedTags')) return (
+            <div className="row" id="saved">
+                <h5>Your Recent Tags</h5>
+                {this.renderSavedTags(JSON.parse(localStorage.getItem('savedTags')))}
+            </div>
+        )
+        else return false
+    },
+
+    renderSavedTags(savedTags){
+        return savedTags.map((savedTag) => {
+            return <div>{savedTag}</div>
+        })
     },
 
     resetState: function () {
@@ -74,6 +103,59 @@ Search = React.createClass({
                 </form>
                 <div className={this.state.loading ? 'hidden':'tag-wrapper' }>
                     {this.renderTags()}
+                </div>
+                {this.renderSavedTagsWrapper()}
+                <div className="row" id="popular">
+                    <h5>Popular Searches</h5>
+
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'food')}/>
+                        <label for="" className="noselect">#food</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'fashion')}/>
+                        <label for="" className="noselect">#fashion</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'art')}/>
+                        <label for="" className="noselect">#art</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'travel')}/>
+                        <label for="" className="noselect">#travel</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'paris')}/>
+                        <label for="" className="noselect">#paris</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'love')}/>
+                        <label for="" className="noselect">#love</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag" onClick={this.popular.bind(this, 'photo')}>
+                        <input type="checkbox"/>
+                        <label for="" className="noselect">#photo</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag" onClick={this.popular.bind(this, 'sport')}>
+                        <input type="checkbox"/>
+                        <label for="" className="noselect">#sport</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
                 </div>
             </div>
         );

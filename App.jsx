@@ -57,6 +57,20 @@ App = React.createClass({
         this.resetState();
         this.refs.search.resetState();
         jQuery('.buttons-wrapper').fadeOut(500);
+        jQuery('#popular input').prop('checked', false);
+        jQuery('#popular, #saved').fadeIn(500);
+    },
+
+    saveTags: function () {
+        var savedTags = localStorage.getItem('savedTags');
+        if (savedTags) {
+            savedTags = JSON.parse(savedTags);
+        }
+        else savedTags = [];
+        savedTags.unshift(this.state.tagsInText);
+        savedTags = savedTags.slice(0, 5);
+        console.log(savedTags);
+        localStorage.setItem('savedTags', JSON.stringify(savedTags));
     },
 
     renderCopyButton: function () {
@@ -66,11 +80,11 @@ App = React.createClass({
                     Selected: {this.state.count}
                 </div>
                 <button className="btn copy show-mobile"
-                        data-clipboard-target="#tags">
+                        data-clipboard-target="#tags" onClick={this.saveTags}>
                     Copy to clipboard
                 </button>
                 <button className="btn copy show-desktop"
-                        data-clipboard-text={this.state.tagsInText}>
+                        data-clipboard-text={this.state.tagsInText} onClick={this.saveTags}>
                     Copy to clipboard
                 </button>
                 <button className="btn start-again" onClick={this.resetApp}>Start again</button>
@@ -100,7 +114,7 @@ App = React.createClass({
             <div className="container">
                 <div className="row">
                     <header>
-                        <h1>IQta.gs</h1>
+                        <h1><a href="http://iqta.gs">IQta.gs</a></h1>
 
                         <h2>Hashtag suggestions for Instagram</h2>
                     </header>
