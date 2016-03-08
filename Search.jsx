@@ -37,7 +37,7 @@ Search = React.createClass({
 
     search: function (string) {
         document.querySelector('#popular').style.display = "none";
-        document.querySelector('#saved').style.display = "none";
+        if(document.querySelector('#saved')) document.querySelector('#saved').style.display = "none";
         ga('send', 'event', 'Search', 'Search', string);
         this.setState({tags: [], loading: true});
         this.props.toggleLoading(true);
