@@ -73,7 +73,6 @@ Search = React.createClass({
     },
 
     renderSavedTagsWrapper(){
-        console.log(JSON.parse(localStorage.getItem('savedTags')))
         if (localStorage.getItem('savedTags')) return (
             <div className="row" id="saved">
                 <h5>Your Recent Tags</h5>
