@@ -31,14 +31,13 @@ Search = React.createClass({
     },
 
     popular: function (string) {
-        ga('send', 'event', 'User', 'Popular', string);
-        this.search(string);
+        this.search(string, 'Popular');
     },
 
-    search: function (string) {
+    search: function (string, action) {
         document.querySelector('#popular').style.display = "none";
-        if(document.querySelector('#saved')) document.querySelector('#saved').style.display = "none";
-        ga('send', 'event', 'Search', 'Search', string);
+        if (document.querySelector('#saved')) document.querySelector('#saved').style.display = "none";
+        ga('send', 'event', 'Search', action, string);
         this.setState({tags: [], loading: true});
         this.props.toggleLoading(true);
         var _this = this; // so that we can set state after Meteor's async call
@@ -58,9 +57,8 @@ Search = React.createClass({
                     $(this).parent().removeClass('mousedown');
                 });
                 $('.tag > input').longpress(function () {
-                    ga('send', 'event', 'User', 'Longpress', this.state.searchString);
                     _this.setState({searchString: $(this).parent().text().replace('#', '')});
-                    _this.handleSubmit();
+                    _this.search($(this).parent().text().replace('#', ''), 'Longpress');
                 });
             }, 1000);
         });
