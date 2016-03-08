@@ -62,6 +62,7 @@ App = React.createClass({
     },
 
     saveTags: function () {
+        ga('send', 'event', 'Copy', 'copy', this.state.tagsInText);
         var savedTags = localStorage.getItem('savedTags');
         if (savedTags) {
             savedTags = JSON.parse(savedTags);
