@@ -26,7 +26,7 @@ Search = React.createClass({
     handleSubmit: function (e) {
         if (e) e.preventDefault();
         if (this.state.searchString) {
-            this.search(this.state.searchString);
+            this.search(this.state.searchString, 'Search');
         }
     },
 
@@ -57,6 +57,7 @@ Search = React.createClass({
                     $(this).parent().removeClass('mousedown');
                 });
                 $('.tag > input').longpress(function () {
+                    Notifications.success("Great! You've chained a search", '', {userCloseable: false, timeout: 3000});
                     _this.setState({searchString: $(this).parent().text().replace('#', '')});
                     _this.search($(this).parent().text().replace('#', ''), 'Longpress');
                 });

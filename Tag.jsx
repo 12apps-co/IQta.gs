@@ -13,7 +13,7 @@ Tag = React.createClass({
             Notifications.success('Great! Select up to 29 tags', '', {userCloseable: false, timeout: 2000});
         }
         if (selectedTags.length === 9 && !this.state.selected) {
-            Notifications.success('Long-press a tag to chain a search!', '', {userCloseable: false, timeout: 3000});
+            Notifications.success('Try pressing a tag for 3 seconds! :)', '', {userCloseable: false, timeout: 3000});
         }
         if (selectedTags.length < 29) {
             if (!this.state.selected) {
