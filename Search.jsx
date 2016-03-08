@@ -154,6 +154,18 @@ Search = React.createClass({
                         <i className="fa fa-plus"></i>
                         <i className="fa fa-check"></i>
                     </div>
+                    <div className="tag" onClick={this.popular.bind(this, 'coffee')}>
+                        <input type="checkbox"/>
+                        <label for="" className="noselect">#coffee</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag" onClick={this.popular.bind(this, 'nature')}>
+                        <input type="checkbox"/>
+                        <label for="" className="noselect">#nature</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
                 </div>
             </div>
         );
