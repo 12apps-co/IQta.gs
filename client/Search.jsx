@@ -1,3 +1,5 @@
+import React from 'react'
+
 Search = React.createClass({
 
     getInitialState: function () {
@@ -67,7 +69,7 @@ Search = React.createClass({
 
     renderTags() {
         return this.state.tags.map((tag) => {
-            return <Tag key={tag._id} tag={tag} addTag={this.props.addTag} removeTag={this.props.removeTag}/>;
+            return <Tag tag={tag} addTag={this.props.addTag} removeTag={this.props.removeTag}/>;
         });
     },
 

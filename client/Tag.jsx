@@ -1,3 +1,5 @@
+import React from 'react'
+
 Tag = React.createClass({
     getInitialState: function () {
         var isTrue = selectedTags.includes(this.props.tag.text);

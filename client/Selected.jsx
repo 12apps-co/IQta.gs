@@ -1,3 +1,5 @@
+import React from 'react'
+
 Selected = React.createClass({
     render() {
         return (
@@ -6,4 +8,4 @@ Selected = React.createClass({
             </li>
         )
     }
-});
+})

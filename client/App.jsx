@@ -1,3 +1,5 @@
+import React from 'react'
+
 // App component - represents the whole app
 App = React.createClass({
 
