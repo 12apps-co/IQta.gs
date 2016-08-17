@@ -7,7 +7,7 @@ App = React.createClass({
         new Clipboard('.btn');
         return {
             count: 0,
-            tagsInText: '@IQta.gs #IQtags',
+            tagsInText: '#IQtags http://IQta.gs',
             loading: false
         }
     },
@@ -34,7 +34,7 @@ App = React.createClass({
     removeTag: function (text) {
         var tagsInText = '';
         if (this.state.count === 1) {
-            tagsInText = '@IQta.gs #IQtags';
+            tagsInText = '#IQtags http://IQta.gs';
             jQuery('.buttons-wrapper').fadeOut(500);
         }
         else {
@@ -119,7 +119,7 @@ App = React.createClass({
                     <header>
                         <h1><a href="http://iqta.gs">IQta.gs</a></h1>
 
-                        <h2>Hashtag suggestions for Instagram</h2>
+                        <h2>Hashtag Helper</h2>
                     </header>
                 </div>
                 <div className="row">
