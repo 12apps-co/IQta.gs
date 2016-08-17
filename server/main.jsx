@@ -59,7 +59,7 @@ Meteor.methods({
 
         result = HTTP.call('GET', 'http://localhost:3333/search/' + encodeURIComponent(searchString))
         if (result && result.data) {
-            if (result.data.length > 20) result.data = result.data.slice(0, 20)
+            if (result.data.related.length > 20) result.data.related = result.data.related.slice(0, 20)
             result.data.related.forEach((tag) => {
                 let obj = {
                     text: tag.hashtag,
