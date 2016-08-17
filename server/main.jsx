@@ -77,7 +77,7 @@ Meteor.methods({
             })
         }
         else {
-            message = 'Wow! New tag registered. Improved search result should be available within 15 minutes :)'
+            message = 'Wow! New tag registered. Improved search result should be available within 5 minutes :)'
         }
         //
         //// do another search for recent images with the tag, and retrieve likes & tags
