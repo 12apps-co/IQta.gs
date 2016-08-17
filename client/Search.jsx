@@ -109,6 +109,18 @@ Search = React.createClass({
                     <h5>Popular Searches</h5>
 
                     <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'rio2016')}/>
+                        <label for="" className="noselect">#rio2016</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
+                        <input type="checkbox" onClick={this.popular.bind(this, 'olympics')}/>
+                        <label for="" className="noselect">#olympics</label>
+                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-check"></i>
+                    </div>
+                    <div className="tag">
                         <input type="checkbox" onClick={this.popular.bind(this, 'food')}/>
                         <label for="" className="noselect">#food</label>
                         <i className="fa fa-plus"></i>
