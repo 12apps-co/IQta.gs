@@ -58,17 +58,18 @@ Meteor.methods({
         })
 
         result = HTTP.call('GET', 'http://localhost:3333/search/' + searchString)
-        if (result && result.length > 0) {
-            result.related.forEach((tag) => {
+        if (result && result.data) {
+            if (result.data.length > 20) result.data = result.data.slice(0, 20)
+            result.data.related.forEach((tag) => {
                 let obj = {
                     text: tag.hashtag,
-                    score: tag.score * 100
+                    score: tag.score * 999999
                 }
                 let exists = false
                 tags.forEach((t, i) => {
                     if (checkForValue(t, tag.hashtag)) {
                         exists = true
-                        tags[i].score = tags[i].score + (tag.score * 100)
+                        tags[i].score = tags[i].score + (tag.score * 999999)
                     }
                 })
                 if (!exists) tags.push(obj)
