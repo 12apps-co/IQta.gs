@@ -105,7 +105,7 @@ Meteor.methods({
             return parseFloat(b.score) - parseFloat(a.score)
         })
         // return the prettily formatted tags
-        if (message.length > 0) return {tags: tags, message: message}
+        if (message && message.length > 0) return {tags: tags, message: message}
         else return tags
     }
 })
