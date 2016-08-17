@@ -39,7 +39,7 @@ Meteor.methods({
         })
 
         tags.forEach(function (tag, i) {
-            if (tags[i].score !== 9999999999) tags[i].score = (tags.length - i) * 100 // normalise score
+            if (tags[i].score !== 9999999999) tags[i].score = (tags.length - i) * 25 // normalise score
             // find any year at the end of tag and replace with current year
             if (tags[i].text.match('[12][kK0-9][0-9]{2}$')) {
                 let newText = tags[i].text.replace(/[12][kK0-9][0-9]{2}$/, '2016')
@@ -63,13 +63,13 @@ Meteor.methods({
             result.data.related.forEach((tag) => {
                 let obj = {
                     text: tag.hashtag,
-                    score: tag.score * 99
+                    score: tag.score * 999
                 }
                 let exists = false
                 tags.forEach((t, i) => {
                     if (checkForValue(t, tag.hashtag)) {
                         exists = true
-                        tags[i].score = tags[i].score + (tag.score * 99)
+                        tags[i].score = tags[i].score + (tag.score * 999)
                     }
                 })
                 if (!exists) tags.push(obj)
