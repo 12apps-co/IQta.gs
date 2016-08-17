@@ -60,7 +60,7 @@ Meteor.methods({
         result = HTTP.call('GET', 'http://localhost:3333/search/' + searchString)
         if (result && result.length > 0) {
             result.related.forEach((tag) => {
-                obj = {
+                let obj = {
                     text: tag.hashtag,
                     score: tag.score * 100
                 }
