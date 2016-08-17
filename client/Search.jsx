@@ -49,8 +49,13 @@ Search = React.createClass({
                 Notifications.error(error);
                 return;
             }
-            _this.setState({tags: result, loading: false});
             _this.props.toggleLoading(false);
+            if (Array.isArray(result)) _this.setState({tags: result, loading: false})
+            else if (result.message) {
+                _this.setState({tags: result.tags, loading: false})
+                Notifications.success(result.message, '', {userCloseable: false, timeout: 10000});
+            }
+
             setTimeout(function () {
                 $('.tag > input').mousedown(function () {
                     $(this).parent().addClass('mousedown');

@@ -57,6 +57,7 @@ Meteor.methods({
             }
         })
 
+        let message
         result = HTTP.call('GET', 'http://localhost:3333/search/' + encodeURIComponent(searchString))
         if (result && result.data) {
             if (result.data.related.length > 30) result.data.related = result.data.related.slice(0, 30)
@@ -74,6 +75,9 @@ Meteor.methods({
                 })
                 if (!exists) tags.push(obj)
             })
+        }
+        else {
+            message = 'Wow! New tag registered. Improved search result will be available in 30 minutes :)'
         }
         //
         //// do another search for recent images with the tag, and retrieve likes & tags
@@ -101,7 +105,8 @@ Meteor.methods({
             return parseFloat(b.score) - parseFloat(a.score)
         })
         // return the prettily formatted tags
-        return tags
+        if (message.length > 0) return {tags: tags, message: message}
+        else return tags
     }
 })
 
