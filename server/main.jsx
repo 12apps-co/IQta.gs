@@ -56,6 +56,24 @@ Meteor.methods({
                 }
             }
         })
+
+        result = HTTP.call('GET', 'http://localhost:3333/search/' + searchString)
+        if (result && result.length > 0) {
+            result.related.forEach((tag) => {
+                let tag = {
+                    text: tag.hashtag,
+                    score: tag.score * 100
+                }
+                let exists = false
+                tags.forEach((t, i) => {
+                    if (checkForValue(t, tag.hashtag)) {
+                        exists = true
+                        tags[i].score = tags[i].score + (tag.score * 100)
+                    }
+                })
+                if (!exists) tags.push(tag)
+            })
+        }
         //
         //// do another search for recent images with the tag, and retrieve likes & tags
         ////let result = InstagramFetcher.fetchImages.fromTag(options);
