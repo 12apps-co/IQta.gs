@@ -8,13 +8,13 @@ Tag = React.createClass({
         }
     },
     handleClick: function () {
-        if (selectedTags.length === 28 && !this.state.selected) {
+        if (selectedTags.length === 9 && !this.state.selected) {
             $('.copy').addClass('highlight');
         }
-        if (selectedTags.length === 4 && !this.state.selected) {
+        if (selectedTags.length === 3 && !this.state.selected) {
             Notifications.success('Great! Select up to 29 tags', '', {userCloseable: false, timeout: 2000});
         }
-        if (selectedTags.length === 9 && !this.state.selected) {
+        if (selectedTags.length === 5 && !this.state.selected) {
             Notifications.success('Try pressing a tag for 3 seconds! :)', '', {userCloseable: false, timeout: 3000});
         }
         if (selectedTags.length < 29) {

@@ -32,10 +32,6 @@ Search = React.createClass({
         }
     },
 
-    popular: function (string) {
-        this.search(string, 'popular');
-    },
-
     search: function (string, action) {
         document.querySelector('#popular').style.display = "none";
         if (document.querySelector('#saved')) document.querySelector('#saved').style.display = "none";
@@ -110,82 +106,7 @@ Search = React.createClass({
                     {this.renderTags()}
                 </div>
                 {this.renderSavedTagsWrapper()}
-                <div className="row" id="popular">
-                    <h5>Popular Searches</h5>
-
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'rio2016')}/>
-                        <label for="" className="noselect">#rio2016</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'olympics')}/>
-                        <label for="" className="noselect">#olympics</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'food')}/>
-                        <label for="" className="noselect">#food</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'fashion')}/>
-                        <label for="" className="noselect">#fashion</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'art')}/>
-                        <label for="" className="noselect">#art</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'travel')}/>
-                        <label for="" className="noselect">#travel</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'paris')}/>
-                        <label for="" className="noselect">#paris</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag">
-                        <input type="checkbox" onClick={this.popular.bind(this, 'love')}/>
-                        <label for="" className="noselect">#love</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag" onClick={this.popular.bind(this, 'photo')}>
-                        <input type="checkbox"/>
-                        <label for="" className="noselect">#photo</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag" onClick={this.popular.bind(this, 'sport')}>
-                        <input type="checkbox"/>
-                        <label for="" className="noselect">#sport</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag" onClick={this.popular.bind(this, 'coffee')}>
-                        <input type="checkbox"/>
-                        <label for="" className="noselect">#coffee</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                    <div className="tag" onClick={this.popular.bind(this, 'nature')}>
-                        <input type="checkbox"/>
-                        <label for="" className="noselect">#nature</label>
-                        <i className="fa fa-plus"></i>
-                        <i className="fa fa-check"></i>
-                    </div>
-                </div>
+                <Popular search={this.search}/>
             </div>
         );
     }

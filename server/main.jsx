@@ -79,27 +79,6 @@ Meteor.methods({
         else {
             message = 'Wow! New tag registered. Improved search result should be available within 5 minutes :)'
         }
-        //
-        //// do another search for recent images with the tag, and retrieve likes & tags
-        ////let result = InstagramFetcher.fetchImages.fromTag(options);
-        //result.data.data.forEach(function (item) {
-        //    let likes = item.likes.count + 1;
-        //    item.tags.forEach(function (text) {
-        //        let obj = {
-        //            text: text,
-        //            score: likes
-        //        };
-        //        // scoring algo
-        //        let exists = false;
-        //        tags.forEach(function (t, i) {
-        //            if (checkForValue(t, text)) {
-        //                exists = true;
-        //                tags[i].score = tags[i].score + (likes * 2.5);
-        //            }
-        //        });
-        //        if (!exists) tags.push(obj);
-        //    })
-        //});
         // sort it from highest score to lowest
         tags.sort(function (a, b) {
             return parseFloat(b.score) - parseFloat(a.score)
@@ -107,6 +86,10 @@ Meteor.methods({
         // return the prettily formatted tags
         if (message && message.length > 0) return {tags: tags, message: message}
         else return tags
+    },
+    popular: function (lang) {
+        result = HTTP.call('GET', 'http://localhost:3333/popular/' + lang)
+        return result
     }
 })
 
