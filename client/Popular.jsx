@@ -8,7 +8,7 @@ Popular = React.createClass({
     },
 
     componentWillMount: function () {
-        if (window.location.pathname.indexOf('kor') > -1) {
+        if (window.location.pathname.indexOf('kor') > -1 || navigator.language.indexOf('ko') > -1) {
             setTimeout(()=> {
                 this.setState({tags: popularTags.kor})
             }, 3000)
