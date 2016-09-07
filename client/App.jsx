@@ -7,7 +7,7 @@ App = React.createClass({
         new Clipboard('.btn');
         return {
             count: 0,
-            tagsInText: '#IQtags http://IQta.gs',
+            tagsInText: '',
             loading: false
         }
     },
@@ -34,7 +34,7 @@ App = React.createClass({
     removeTag: function (text) {
         var tagsInText = '';
         if (this.state.count === 1) {
-            tagsInText = '#IQtags http://IQta.gs';
+            tagsInText = '';
             jQuery('.buttons-wrapper').fadeOut(500);
         }
         else {
