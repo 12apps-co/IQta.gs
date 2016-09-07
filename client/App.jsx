@@ -118,8 +118,9 @@ App = React.createClass({
                 <div className="row">
                     <header>
                         <h1><a href="http://iqta.gs">IQta.gs</a></h1>
-
                         <h2>Hashtag Helper</h2>
+                        <h3><a href="https://www.messenger.com/t/IQta.gs" target="_blank">Try the IQta.gs Chat Bot!</a>
+                        </h3>
                     </header>
                 </div>
                 <div className="row">
