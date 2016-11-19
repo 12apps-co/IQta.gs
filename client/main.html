@@ -27,7 +27,7 @@
     </script>
     <script>
 
-        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function () {
             FB.init({
                 appId: "610303945797476",
                 xfbml: true,
@@ -36,10 +36,13 @@
 
         };
 
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
@@ -49,6 +52,12 @@
 
 <body>
 {{> notifications}}
+<div className="fb-send-to-messenger"
+     messenger_app_id="610303945797476"
+     page_id="297397547293947"
+     data-ref="IQtags-Website"
+     color="blue"
+     size="xlarge"></div>
 <div id="app"></div>
 <footer><span>️&#128073; IQta.gs by <a href="http://12apps.co" target="_blank">Francis Kim</a> &#9889;</span>
 </footer>
