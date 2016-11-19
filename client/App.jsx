@@ -119,14 +119,14 @@ App = React.createClass({
                     <header>
                         <h1><a href="http://iqta.gs">IQta.gs</a></h1>
                         <h2>Hashtag Helper</h2>
-
+                        <h3><a href="https://www.messenger.com/t/IQta.gs" target="_blank">Try the IQta.gs Chat Bot!</a>
+                        </h3>
                         <div className="fb-send-to-messenger"
                              messenger_app_id="610303945797476"
                              page_id="297397547293947"
                              data-ref="IQtags-Website"
                              color="blue"
-                             size="xlarge">
-                        </div>
+                             size="xlarge"></div>
                     </header>
                 </div>
                 <div className="row">
