@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 Search = React.createClass({
 
@@ -102,7 +102,7 @@ Search = React.createClass({
                            onChange={this.handleChange}
                            placeholder="hashtag" ref="input"/>
                 </form>
-                <div className={this.state.loading ? 'hidden':'tag-wrapper' }>
+                <div className={this.state.loading ? 'hidden' : 'tag-wrapper' }>
                     {this.renderTags()}
                 </div>
                 {this.renderSavedTagsWrapper()}
