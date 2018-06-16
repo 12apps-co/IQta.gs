@@ -4,5 +4,5 @@ import { render } from 'react-dom'
 
 Meteor.startup(() => {
     selectedTags = []
-    render(<App/>, document.getElementById('app'))
+    //render(<App/>, document.getElementById('app'))
 })
