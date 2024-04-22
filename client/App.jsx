@@ -4,7 +4,7 @@ import React from 'react'
 App = React.createClass({
 
     getInitialState: function () {
-        new Clipboard('.btn');
+        // new Clipboard('.btn');
         return {
             count: 0,
             tagsInText: '',
